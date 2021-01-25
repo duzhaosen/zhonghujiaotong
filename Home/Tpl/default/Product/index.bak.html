@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><{$product.title}>-<{$Think.config.seo_title}></title>
+<meta name="keywords" content="<{$product.keywords}>" />
+<meta name="description" content="<{$product.description}>" />
+<include file='Public:file'/>
+<load href="__PUBLIC__/css/product.css"/>
+<load href="__PUBLIC__/js/product.js"/>
+<script language="javascript">var catid=<{$product.pid}>,pid=<{$prolist.pid}>;</script>
+</head>
+<body>
+<include file='Public:head'/>
+<div class="container">
+
+<div class="product_desc">
+	<div class="max_w pdt_info clearfix">
+		<div class="fr"><img width="310" src="__ROOT__/Uploads/<{$product.thumb}>"></div>
+		<div class="fl">	
+			<h3><{$product.name}></h3>		
+			<h4><{$product.description|mb_substr=###,0,200,'utf-8'}></h4>
+			<p><{$product.property1}>&nbsp;&nbsp;&nbsp;&nbsp;<{$product.property2}></p>
+	        <p><{$product.property3}>&nbsp;&nbsp;&nbsp;&nbsp;<{$product.property4}></p>
+		</div>
+	</div>
+</div>
+<div class="main" class="mt_40">
+            <div class="product_content">
+                <{$product.contents}>
+            </div>
+	        <div class="point">
+	              <span class="to_prev"><{$prevnext.prev}></span>
+	              <span class="to_next"><{$prevnext.next}></span>
+	        </div>
+</div>
+<!-- end of main -->
+</div>
+<script>
+    $.ajaxSetup({
+        timeout: 300000
+    });
+</script>
+
+<include file='Public:foot'/>
+
+</body>
+</html>

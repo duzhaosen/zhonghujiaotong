@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><{$photodata.title}>-<{$Think.config.seo_title}></title>
+<meta name="keywords" content="<{$photodata.keywords}>" />
+<meta name="description" content="<{$photodata.description}>" />
+<include file='Public:file'/>
+<script language="javascript">var catid=<{$photodata.pid}>,pid=<{$photolist.pid}>,webroot="__ROOT__/",contenturl="__SELF__";</script>
+</head>
+<body>
+<include file='Public:head'/>
+<div class="container">
+
+<div class="main">
+    <div class="path_title"><span><{$photolist.name}></span></div>
+    <div class="content">
+      <div class="thumbpic">
+          <a href="javascript:;" class="bntprev"></a>
+          <div id="piclist">
+              <ul>
+                <volist name='photo' id='vo'>
+                  <li><img src="__ROOT__/Uploads/<{$photo[$key]}>" alt="<{$photodata.name|}>"/><tt></tt></li>
+                </volist>
+              </ul>
+          </div>
+          <a href="javascript:;" class="bntnext"></a>
+      </div>
+
+      <div class="photo_info">
+        <{$photodata.contents}>
+      </div>
+
+  </div>
+
+</div>
+<!-- end of main -->
+</div>
+<script>
+    $.ajaxSetup({
+        timeout: 300000
+    });
+</script>
+
+<include file='Public:foot'/>
+
+</body>
+</html>

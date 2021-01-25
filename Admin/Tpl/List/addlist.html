@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<load href="../Public/css/index.css"/>
+<load href="../Public/js/jquery-1.7.2.min.js"/>
+<load href="../Public/js/quickView.js"/>
+<title>添加栏目</title>
+<if condition="$type eq 'page'">
+    <include file='Public:kinde'/>
+</if>
+<SCRIPT>
+    function CheckJob() {
+        if (document.myform.name.value.length == "") {
+            alert("导航名称不能为空！");
+            document.myform.name.focus();
+            return false;
+        }
+        if ($("#link_input").val() == "") {
+            alert("链接地址不能为空！");
+            return false;
+        }
+        var number = document.getElementById('sort').value;
+        var reg = /^\d+$/;
+        if (!number.match(reg)) {
+            alert("排序号必须为数字!");
+            document.myform.sort.focus();
+            return false;
+        }
+    }
+</SCRIPT>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="LineRightBlue1">
+    <tr>
+        <td width="" height="24">
+            <ul class="nav_types">
+                <if condition="$pid eq 0">
+                    <li>选择导航类型：</li>
+                <else/>
+                    <li>选择【<{$name}>】的子导航类型：</li>
+                </if>
+                <li><a class="li_page" href="<{:U('addlist',array('pid'=>$pid,'tid'=>2,'type'=>'page'))}>">【单页】</a></li>
+                <li><a class="li_mod" href="<{:U('addlist',array('pid'=>$pid,'tid'=>1,'type'=>''))}>">【列表】</a></li>
+                <li><a class="li_link" href="<{:U('addlist',array('pid'=>$pid,'tid'=>3,'type'=>'link'))}>">【链接】</a></li>
+            </ul> 
+        </td>
+        <td width="12%" align="right"><a href="<{:U('List/index')}>">【返回>>】</a></td>
+    </tr>
+</table>
+
+
+<form action="<{:U('savelist')}>" enctype="multipart/form-data" method="post" name="myform" id="myform"
+      onSubmit="return CheckJob()">
+    <DIV class="PageContent">
+        <table width="100%" border="0" class="ListCategory">
+            <tr>
+                <td width="9%">导航名称：</td>
+                <td width="91%" height="35"><input name="name" type="text" class="FormSmall"><span
+                            style="color:#F00; font-size:12px;">*必填</span></td>
+            </tr>
+            <if condition="$type !='link'">
+            <tr>
+                <td>链接地址：</td>
+                <td height="35"><input name="link" type="text" class="FormSmall" placeholder="默认为空">
+                    <a title='(1)站内链接：如 /aaa<br>(2)站外链接：需以http://开头' style="margin-left: 5px;" href="#">
+                        <img src="../Public/images/help.gif">
+                    </a>
+                </td>
+            </tr>
+            </if>
+            <if condition="$type eq 'link'">
+            <tr>
+                <td>链接地址：</td>
+                <td height="35"><input id="link_input" name="link" type="text" class="FormSmall" placeholder="默认为空">
+                    <a title='(1)站内链接：如 /aaa<br>(2)站外链接：需以http://开头' style="margin-left: 5px;" href="#">
+                        <img src="../Public/images/help.gif">
+                    </a>
+                </td>
+            </tr>
+            </if>
+
+            <if condition="$type !='page' && $type !='link'">
+            <style>.li_mod{color:#004A98}</style>
+                <tr>
+                    <td>导航模型:</td>
+                    <td height="35">
+                        <select name="type" style="height:28px;" id="sel">
+                            <option value="product">产品模型</option>
+                            <option value="new">新闻模型</option>
+                            <option value="photo">图片模型</option>
+                            <option value="download">下载模型</option>
+                        </select>
+                    </td>
+                </tr>
+                <else/>
+                <input name="type" type="hidden" value="<{$type}>">
+            </if>
+
+            <tr>
+                <td>导航菜单：</td>
+                <td height="35">
+                    <select name="nav" style="height:28px;">
+                        <option value="1">显示</option>
+                        <option value="0">隐藏</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>排序ID：</td>
+                <td height="35"><input name="sort" id="sort" type="text" class="FormSmall" style="width: 50px;">
+                    <span style="color:#F00; font-size:12px;">*必填</span>
+                </td>
+            </tr>
+            <tr class="icon_tr">
+                <td>缩略图：</td>
+                <td height="35">
+                    <input type="file" name="file" id="file"/>
+                </td>
+            </tr>
+            <if condition="$type eq 'link'">
+
+                <style type="text/css"> .icon_tr{display: none;} .li_link{color:#004A98}</style>
+            </if>
+
+            <neq name="type" value="link">
+                <tr>
+                    <td>URL优化：</td>
+                    <td height="35"><input name="url" type="text" class="FormSmall"> 
+                    <a title='URL只能是字母、数字或-' style="margin-left: 5px;" href="#">
+                        <img src="../Public/images/help.gif">
+                    </a>
+                </td>
+                </tr>
+                <tr>
+                    <td>SEO标题：</td>
+                    <td height="35">
+                        <if condition="$pid eq 0">
+                            <input name="title" type="text" class="FormSmall seo_title">
+                            <else/>
+                            <input name="title" type="text" class="FormSmall" value="">
+                        </if>
+                    </td>
+                </tr>
+                <tr>
+                    <td>SEO关键字：</td>
+                    <td height="35"><input name="keywords" type="text" class="FormSmall" style="width: 320px;"></td>
+                </tr>
+                <tr>
+                    <td>SEO描述：</td>
+                    <td height="110"><textarea name="description" class="FormSmall" style="width: 450px; height: 80px;"></textarea>
+                    </td>
+                </tr>
+            </neq>
+
+
+            <if condition="$type eq 'page'">
+             <style>.li_page{color:#004A98}</style>
+                <tr>
+                    <td>单页内容：</td>
+                    <td>
+                        <textarea name="contents" id="contents" style="width:745px; height:360px; margin:8px 0;"></textarea>
+                    </td>
+                </tr>
+            </if>
+
+        </table>
+    </DIV>
+
+    <table width="100%">
+            <tr>
+                <td width="9%" height="55" align="center">
+                </td>
+                <td height="55" align="left">
+                    <input type="submit" value="提交" class="bginput">&nbsp;&nbsp;
+                    <input name="reset" type="reset" class="bginput" value="重置"/>
+                    <input name="pid" type="hidden" value="<{$pid}>">
+                </td>
+            </tr>        
+    </table>
+</form>
+</body>
+</html>

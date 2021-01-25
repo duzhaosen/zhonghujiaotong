@@ -1,0 +1,9 @@
+<volist name='product' id='vo' offset="0">
+   	<div class="item">
+   		<a href="<if condition="$vo.link_url eq ''"><{:W('Href',array('url'=>$vo['url'],'id'=>$vo['id'],'type'=>'Product'))}><else /><{$vo.link_url}></if>" title="<{$vo.name|}>">
+   			<span><img name="picautozoom" src="__ROOT__/Uploads/<{$vo.thumb}>" alt="<{$vo.name|}>"/></span>
+   			<h4><{$vo.name|mb_substr=###,0,80,'utf-8'}></h4>
+   			<p>查看详情+</p>
+   		</a>
+   	</div>
+</volist>

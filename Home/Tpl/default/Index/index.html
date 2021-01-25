@@ -1,0 +1,525 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><{$Think.config.seo_title}></title>
+<meta name="keywords" content="<{$Think.config.seo_keywords}>" />
+<meta name="description" content="<{$Think.config.seo_description}>" />
+<include file='Public:file'/>
+<style>
+    * {
+	    scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    .we {
+        width: 100%;
+        height:600px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .wel {
+        display: flex;
+        width: 45%;
+        height: 100%;
+        background:url(__ROOT__/Public/images/about.jpg) 0 0 / 100% 100% no-repeat;
+    }
+    .wer {
+        display: flex;
+        width: 55%;
+        height: 100%;
+        background:rgb(155,112,69);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .wenei {
+        width:50%;
+        height:60%;
+    }
+    .wenei .wet {
+        font-size:40px;
+        letter-spacing: 5px;
+        color:#fff;
+        font-weight:bold;
+    }
+    .wenei .neirong {
+        font-size:16px;
+        color:#fff;
+        margin-bottom:20px;
+        text-indent: 2em;
+    }
+    .btn {
+        outline: none;
+        width:100px;
+        height:30px;
+        text-align: center;
+        color:#fff;
+        line-height: 30px;
+        cursor: pointer;
+        border:1px solid #fff
+    }
+    .btn:hover {
+        background:skyblue;
+    }
+
+    /* 业务介绍 */
+
+    .ssome {
+        width: 100%;
+        height: 100%;
+        display:flex;
+        flex-wrap: wrap;
+    }
+    .ssomes {
+        display:flex;
+        flex-direction: column;
+        width:calc(100% / 3 - 20px);
+        margin:10px;
+        height: 300px;
+        justify-content: center;
+        align-items: center;
+    }
+    .ssome .ssomes .ss {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height:100%;
+        align-items: center;
+        cursor: pointer;
+    }
+    .ssome .ssomes .ss:hover {
+        opacity: .8;
+    }
+    .ss .nav_a {
+        font-size:30px;
+        -webkit-text-stroke: 0.5px #fff;
+        color:#000;
+    }
+    /* 新闻列表 */
+
+    .new {
+        height:100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin:20px 0;
+    }
+
+    .new .nleft {
+        width: 50%;
+        margin-right:10px;
+    }
+    .new .nright {
+        background:url(__ROOT__/Public/images/news.png) 0 0 / 100% 100% no-repeat;
+        width: 50%;
+        height:500px;
+    }
+    .new .nleft .blocks {
+        padding:10px;
+        cursor:pointer;
+        border-bottom:.5px dashed #dbd4cd;
+        display: flex;
+        justify-content: space-between;
+    } 
+    .l {
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size:18px;
+        color:rgb(155,112,69);
+        font-weight: bold;
+    }
+    .l div:nth-child(2){
+        font-weight: normal;
+        font-size:16px;
+    }
+    .r {
+        width: 80%;
+    }
+    .new .nleft .blocks .r .title {
+        font-size:16px;
+    }
+    .new .nleft .blocks .r .des {
+        color:#999;
+        display: block;
+        display: -webkit-box;
+        word-wrap:break-word;
+        margin: 0 auto;
+        line-height: 1.72;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .new .nleft .blocks:hover {
+        background:#f8f9fa
+    }
+    /* 车辆统筹 */
+    .car {
+        width: 100%;
+        height:100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .carlist {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin:10px 0;
+        height:100%;
+    }
+    .carleft {
+        width: 50%;
+        height:100%;
+    }
+    .carleft .neirong {
+        padding:10px;
+    }
+    .carleft .neirong .title {
+        text-align: center;
+        font-size:40px;
+        font-weight:bold;
+    }
+    .carleft img {
+        width: 100%;
+        height: 100%;
+    }
+    .carright {
+        width: calc(50% - 20px);
+        margin-left:20px;
+        height:100%;
+        padding:5px;
+    }
+    .carright .neirong {
+        padding:10px;
+        display: flex;
+        flex-direction: column;
+    }
+    .carright .neirong .des {
+        width:80%;
+        height: 370px;
+        overflow: auto;
+        margin: 0 auto;
+        /* display: block;
+        display: -webkit-box;
+        word-wrap:break-word;
+        margin: 0 auto;
+        line-height: 1.72;
+        -webkit-line-clamp: 13;
+        -webkit-box-orient: vertical; */
+        /* overflow: hidden; */
+        text-overflow: ellipsis;
+    }
+    .carright .neirong .des::-webkit-scrollbar {
+	    display: none;
+    }
+    .carleft .neirong .des::-webkit-scrollbar {
+	    display: none;
+    }
+    .neizczc {
+        display:flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size:20px;
+        height: 200px;
+    }
+    .neizczc a {
+        text-decoration: underline;
+        margin:10px 0;
+        font-weight: bold;
+    }
+    .carleft .neirong .des {
+        width:80%;
+        height: 370px;
+        overflow: auto;
+        margin: 0 auto;
+        /* display: block;
+        display: -webkit-box;
+        word-wrap:break-word;
+        margin: 0 auto;
+        line-height: 1.72;
+        -webkit-line-clamp: 13;
+        -webkit-box-orient: vertical; */
+        /* overflow: hidden; */
+        text-overflow: ellipsis;
+    }
+    .carright .neirong .title{
+        text-align: center;
+        font-size:40px;
+        font-weight:bold;
+    } 
+    .carright img {
+        width: 100%;
+        height: 100%;
+    }
+    .buchang {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    .bulist {
+        width: calc(18% - 10px);
+        margin-left:10px;
+        cursor: pointer;
+        position: relative;
+    }
+    .bulist:hover{
+        opacity: .8;
+    }
+    .ss {
+        position: absolute;
+        bottom:20px;
+        color:#fff;
+        font-size:35px;
+        letter-spacing: 5px;
+        writing-mode:tb-rl;
+        font-weight: bold;
+    }
+    .bulist:nth-child(4) .ss {
+        right:0px;
+    }
+    .bulist:nth-child(5) .ss {
+        right:0px;
+    }
+    .bulist img{
+        width: 100%;
+        height: 400px;
+        clip-path:polygon(0% 0, 100% 12%, 100% 100%, 0 100%);
+    }
+    .bulist:nth-child(4) img {
+        clip-path:polygon(100% 0, 100% 100%, 0% 100%, 0 12%) !important;
+    }
+    .bulist:nth-child(5) img {
+        clip-path:polygon(100% 0, 100% 100%, 0% 100%, 0 12%) !important;
+    }
+    .buTeshu {
+        width: calc(100% - 18% * 4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        cursor: default;
+    }
+    .buTeshu .title {
+        text-align: center;
+        font-size:60px;
+        font-weight: bold;
+        color:rgb(155,112,69)
+    }
+    .buTeshu .title2 {
+        text-align: center;
+        font-size:25px;
+        font-weight: bold;
+        color:rgb(155,112,69)
+    }
+    .buTeshu .title3 {
+        text-align: center;
+        font-size:30px;
+        font-weight: bold;
+        color:rgb(155,112,69)
+    }
+</style>
+</head>
+<body>
+<include file='Public:head'/>
+<div class="container">
+
+    <div class="banner"><{:W('Flash')}></div>
+<!-- 
+    <div class="hot_se">
+        <div class="w">
+            <span>热门关键词：</span>
+            <div class="hot_li">
+               <{:W('About',array('id'=>120,'len'=>999999999))}>
+            </div>   
+            <div class="searchformzone search fr">
+                <form id="searchform" method="get" action="<{:U('Search/index')}>">
+                    <div class="searchform">
+                        <input type="text" name="name" class="input" placeholder="请输入关键字搜索" autocomplete="off" onblur="if(this.value.length<1)this.value=this.defaultValue;" onfocus="if(this.value==this.defaultValue)this.value=''"/>
+                    </div>
+                    <div class="search_submit">
+                      <a href="javascript:searchform.submit();"></a>
+                    </div>
+                </form>
+            </div>  
+        </div>
+    </div> -->
+    <div class="t">走进中互</div>
+    <div class="we">
+        <div class="wel"></div>
+        <div class="wer">
+            <div class="wenei">
+                <div class="wet">关于我们</div>
+                <div class="neirong">
+                    <p>中互交通运输有限公司（以下简称中互交通），在国家政策指引下，依照国家对运输行业高要求，迎合市场发展，立足创新，于2019年7月经国家正式批设，注册资金1亿元，坐落于河北省石家庄市高新技术开发区太行南大街197号,是面向全国的综合性交通服务企业。
+                    </p>
+                    <p>
+                        中互交通致力于通过大数据及高科技手段为交通运输企业保驾护航，公司经营范围包括:道路货物运输服务，汽车维修；展览展示服务；车辆年检代理服务；汽车及配件、轮胎的销售；交通安全统筹服务等...
+                    </p>
+                    </div>
+                <a href="/list-7-82" class="btn" style="display: inline-block;">更多</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- <div class="index_pdt">
+        <div class="w clearfix">
+            <div class="cate fl">
+                <h2>产品分类中心<small>PRODUCTS CENTER</small></h2>
+                <div class="scroll">
+                    <ul class="c1">
+                    <php>$cate_list = get_children_list(1);</php>
+                    <volist name='cate_list' id='vo'>
+                        <if condition="$vo.nav eq '0'"><else />
+                        <li><a class="a1" href="<if condition="$vo.link eq ''">/<{$vo.url}><else /><{$vo.link}></if>"><{$vo.name}></a>
+                            <ul class="c2">                                       
+                                <php>$cate_list2 = get_children_list($vo['id']);</php>
+                                <volist name='cate_list2' id='vo2'>
+                                    <if condition="$vo.nav eq '0'"><else />
+                                    <li><a class="a2" href="<if condition="$vo2.link eq ''">/<{$vo2.url}><else /><{$vo2.link}></if>"><{$vo2.name}></a></li>
+                                    </if>
+                                </volist>  
+                            </ul>
+                        </li>                 
+                    </if>
+                    </volist>
+                    </ul>
+                    <ul class="c1">
+                    <php>$cate_list = get_children_list(155);</php>
+                    <volist name='cate_list' id='vo'>
+                        <if condition="$vo.nav eq '0'"><else />
+                        <li><a class="a1" href="<if condition="$vo.link eq ''">/<{$vo.url}><else /><{$vo.link}></if>"><{$vo.name}></a>
+                            <ul class="c2">                                       
+                                <php>$cate_list2 = get_children_list($vo['id']);</php>
+                                <volist name='cate_list2' id='vo2'>
+                                    <if condition="$vo.nav eq '0'"><else />
+                                    <li><a class="a2" href="<if condition="$vo2.link eq ''">/<{$vo2.url}><else /><{$vo2.link}></if>"><{$vo2.name}></a></li>
+                                    </if>
+                                </volist>  
+                            </ul>
+                        </li>                 
+                    </if>
+                    </volist>
+                    </ul>
+                </div>
+                <{:W('Ad',array('id'=>'8'))}>
+            </div>
+
+            <div class="list_box fr">
+                <h2>产品推荐<span>/ Product Recommendation</span><a href="/products.html">MORE+</a></h2>
+                <div class="list clearfix"><{:W('List',array('table'=>'Product','num'=>6,'bid'=>1,'id'=>1))}></div>
+            </div>
+        </div>
+    </div> -->
+    
+    <!-- <div class="index_ad"><{:W('Ad',array('id'=>'18'))}></div> -->
+
+    <div style="width: 100%;">
+        <div class="t">车辆统筹</div>
+        <{:W('Car',['pid'=>123,'type'=>1])}>
+    </div>
+
+    <!-- <div class="index_power">
+        <div class="w">
+            <div class="t">业务介绍</div>
+            <div class="info clearfix"><{:W('NavNew',['pid'=>155,'type'=>0])}></div>
+        </div>
+    </div> -->
+
+
+    <div class="index_power" style="background:#fff">
+        <div class="w">
+            <div class="t">补偿流程</div>
+            <div class="info clearfix"><{:W('Buchang',['pid'=>131,'type'=>0])}></div>
+        </div>
+    </div>
+
+    <div class="index_power" style="background:#fff">
+        <div class="w">
+            <div class="t">新闻资讯</div>
+            <div class="info clearfix"><{:W('News',131)}></div>
+        </div>
+    </div>
+
+    <!-- <div class="index_adv">
+        <div class="adv_t"><{:W('Ad',array('id'=>'36'))}></div>
+        <div class="w">
+            <div class="info">
+                <{:W('Ad',array('id'=>'32,33,34,35'))}>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- <div class="photo_scroll">
+        <div class="w">
+            <div class="t">合作伙伴<p>10年风雨 感恩您选择了我们</p></div>
+            <div class="dowebok6 owl-carousel"><{:W('List',array('table'=>'Photo','num'=>12,'bid'=>1,'id'=>161))}></div>
+        </div>
+    </div> -->
+
+
+</div>
+
+<include file='Public:foot'/>
+<script type="text/javascript">
+    $.ajaxSetup({
+        timeout: 300000
+    });
+
+$(function(){
+// banner    
+    $('.banner').flexslider({
+        directionNav: true,
+        pauseOnAction: false
+    });
+//scroll
+    (function($){
+        $(window).load(function(){
+            $(".scroll").mCustomScrollbar({
+                autoHideScrollbar:true,
+                scrollButtons:{
+                    enable:true
+                },
+                theme:"dark",
+                advanced:{ updateOnContentResize: true }
+            }).find(".mCSB_container").css("padding-bottom","10px");
+
+        });
+    })(jQuery);
+
+//图片滚动
+    $('.dowebok6').owlCarousel({
+        items: 6,
+        navigation: true,
+       // autoPlay: true,
+        navigationText: ["",""],
+        scrollPerPage: true
+    });
+});
+
+//tabs
+$(document).ready(function() {
+    jQuery.jqtab = function(tabtit,tab_conbox,shijian) {
+        $(tab_conbox).children("li").hide();
+        $(tabtit).find("li:first").addClass("thistab").show(); 
+        $(tab_conbox).find("li:first").show();
+    
+        $(tabtit).find("li").bind(shijian,function(){
+          $(this).addClass("thistab").siblings("li").removeClass("thistab"); 
+            var activeindex = $(tabtit).find("li").index(this);
+            $(tab_conbox).children().eq(activeindex).show().siblings().hide();
+            return false;
+        });    
+    };
+    $.jqtab(".tabs",".tab_conbox","mouseover");      
+});
+
+</script>
+
+</body>
+</html>

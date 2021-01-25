@@ -1,0 +1,18 @@
+<if condition="$new">
+  <ul>
+    <volist name="new" id="vo" offset="0">
+	<li>
+		<a href="<{:W('Href',array('url'=>$vo['url'],'id'=>$vo['id'],'type'=>'new'))}>" title="<{$vo.title}>">
+			<span class="image">		
+				<img name="picautozoom" src="__ROOT__/Uploads/<{$vo.photo}>"onerror="this.src='../Public/images/error.jpg'" alt="<{$vo.name}>"/>
+	        </span>
+	        <h4 class="news_t"><{$vo.title|mb_substr=###,0,50,'utf-8'}></h4>
+			<div class="desc">
+				 <{$vo.description|mb_substr=###,0,50,'utf-8'}>...
+			</div>
+			<div class='time hide'><span><{$vo.time|date='d',###}></span><p><{$vo.time|date='Y-m',###}></p></div>
+		</a>
+	</li>
+    </volist>
+  </ul>
+</if>

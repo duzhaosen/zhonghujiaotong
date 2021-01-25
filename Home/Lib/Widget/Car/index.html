@@ -1,0 +1,51 @@
+<div class="car">
+    <volist name='list' id='vo' key="k">
+        <if condition="$k % 2 == 0">
+        <div class="carlist">
+            <div class="carleft">
+                <a href="<{:W('Listhref',array('url'=>$vo['url'],'id'=>$vo['id'],'link'=>$vo['link']))}>"><img src="__ROOT__/Uploads/<{$vo.icon}>" alt="">
+                </a>
+            </div>
+            <div class="carright">
+                <div class="neirong">
+                    <div class="title"><{$vo.name}></div>
+                    <div class="des">
+                        <if condition="$vo.name == '政策支持'">
+                            <div class="neizczc">
+                                <a href="/new/new-74-502.html">河北省人民政府 关于进一步加强道路交通安全工作的 实 施 意 见</a>
+                                <a href="/new/new-72-798.html">转载》国务院关于加强道路交通安全工作的意见国发（2012）30号文件</a>
+                            </div>
+                        <else />
+                        <{$vo.contents}>
+                        </if>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <else />
+        <div class="carlist">
+            <div class="carleft">
+                <div class="neirong">
+                    <div class="neirong">
+                        <div class="title"><{$vo.name}></div>
+                        <div class="des">
+                            <if condition="$vo.name == '政策支持'">
+                                <div class="neizczc">
+                                    <a href="/new/new-74-502.html">河北省人民政府 关于进一步加强道路交通安全工作的 实 施 意 见</a>
+                                    <a href="/new/new-72-798.html">转载》国务院关于加强道路交通安全工作的意见国发（2012）30号文件</a>
+                                </div>
+                            <else />
+                            <{$vo.contents}>
+                            </if>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carright">
+                <a href="<{:W('Listhref',array('url'=>$vo['url'],'id'=>$vo['id'],'link'=>$vo['link']))}>"><img src="__ROOT__/Uploads/<{$vo.icon}>" alt="">
+                </a>            
+            </div>
+        </div>
+        </if>
+    </volist>
+</div>

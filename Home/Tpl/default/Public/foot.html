@@ -1,0 +1,77 @@
+<div class="footer" style="background: #fff;">
+    <div class="w clearfix" style="width:1200px">
+            <div class="ft_nav clearfix fl">
+              <ul>
+                <li class="share_box" style="width:270px;">
+                  <img class="f_logo" src="__ROOT__/Uploads/<{$Think.config.web_logo}>" alt="<{$Think.config.web_name}>" style="width:270px;" />
+                  <!-- <div class="share">
+                    <div class="bdsharebuttonbox"><span class="fl">分享到：</span><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a></div>
+          <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{},"image":{"viewList":["qzone","weixin","tsina"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","weixin","tsina"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+                  </div> -->
+                </li>
+                <li style="width:130px;">
+                  <h4>走进中互</h4>
+                  <php>$cate_list = get_children_list(1);</php>
+                  <volist name='cate_list' id='vo'>
+                      <if condition="$vo.nav eq '0'"><else />
+                      <a href="__ROOT__<if condition="$vo.link eq ''">/<{$vo.url}>.html<else /><{$vo.link}></if>"><{$vo.name}></a>
+                      </if>
+                  </volist>            
+                </li>
+                <li style="width:130px;">
+                  <h4>新闻资讯</h4>
+                  <php>$cate_list = get_children_list(134);</php>
+                  <volist name='cate_list' id='vo'>
+                      <if condition="$vo.nav eq '0'"><else />
+                      <a href="__ROOT__<if condition="$vo.link eq ''">/<{$vo.url}>.html<else /><{$vo.link}></if>"><{$vo.name}></a>
+                      </if>
+                  </volist>            
+                </li>
+              </ul>
+            </div>
+            <div class="ft_tel fl">
+                <h4>联系我们</h4>
+                <div class="li">
+                  <p>电话：<{$Think.config.web_tel}></p>               
+                  <p>邮箱：<{$Think.config.web_email}></p>                 
+                  <p>地址：<{$Think.config.web_add}></p>
+                </div>
+            </div>
+            <div class="ft_code fl">
+                <h4>扫一扫关注</h4>
+                <img  src="__ROOT__/Uploads/<{$Think.config.web_qrcode}>" style="width:130px;">
+            </div>
+    </div>
+
+    <div class="copyright clearfix">
+        <div class="w">
+            <div class=""><{$Think.config.web_copyright}>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.beian.miit.gov.cn" target="_blank"><{$Think.config.web_icp}></a>&nbsp;&nbsp;&nbsp;&nbsp;<{$Think.config.web_count}></div>
+            
+        </div>
+    </div>
+</div>
+<{:W('Online')}>
+<{$Think.config.web_share}>
+
+<script>
+    $(function(){
+    	$(".nav").mouseover(function(){
+            $(".header").css("overflow","visible");
+        });
+        $(".nav").mouseout(function(){
+            $(".header").css("overflow","hidden");
+        });
+
+        $(".search_ico").click(function(){
+            $(".search").slideDown();
+            $(".search .input").focus();
+        });
+
+        $(".search_close").click(function(){
+            $(".search").slideUp();
+        });
+
+
+    });	
+</script>
+

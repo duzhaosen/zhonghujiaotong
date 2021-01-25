@@ -1,0 +1,19 @@
+<div class="new">
+    <div class="nleft">
+        <volist name="list" id="vo">
+            <a href="new/<{$vo.url}>">
+            <div class="blocks">
+                <div class="l">
+                    <div><{$vo.time|date="d",###}></div>
+                    <div><{$vo.time|date="Y-m",###}></div>
+                </div>
+                <div class="r">
+                    <div class="title"><{$vo.title}></div>
+                    <div class="des"><{$vo.description}></div>
+                </div>
+            </div>
+            </a>
+        </volist>
+    </div>
+    <div class="nright"></div>
+</div>

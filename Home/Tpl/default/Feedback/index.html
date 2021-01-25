@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>联系方式-<{$Think.config.seo_title}></title>
+<meta name="keywords" content="<{$Think.config.seo_keywords}>" />
+<meta name="description" content="<{$Think.config.seo_description}>" />
+<script language="javascript">var catid="",pid="";</script>
+<include file='Public:file'/>
+<style>
+#cat_active89{    
+    border-left: 3px solid #f08519;
+    background: #fff;
+    color: #f08519;
+}
+</style>
+<SCRIPT language=javaScript>
+function CheckJob()
+{
+  if (document.myform.title.value.length==""){
+    alert ("留言标题不能为空！");
+    document.myform.title.focus();
+    return false;
+  }
+  if (document.myform.name.value.length==""){
+    alert ("姓名不能为空！");
+    document.myform.name.focus();
+    return false;
+  }
+  if (document.myform.tel.value.length==""){
+    alert ("电话不能为空！");
+    document.myform.tel.focus();
+    return false;
+  }
+ }
+
+</SCRIPT>
+<style>
+    .mains{
+        width: 1200px; 
+        margin:20px auto 50px; 
+        height: auto; 
+        min-height: 400px; 
+        overflow: hidden;
+    }
+
+</style>
+</head>
+<body>
+<include file='Public:head'/>
+<div class="container">
+  <div class="page_banner"><{:W('Ad',array('id'=>'10'))}></div>
+
+  <div class="mains">  
+        <div class="path_title"><span class="span_left">在线留言</span><span class="span_right">您现在的位置：<a href="__ROOT__/">网站首页</a> &gt; 在线留言</span></div>
+        <!-- <br /> -->
+        <!-- <div class="clearfix"><{:W('About',array('id'=>87,'len'=>99999999999))}></div>
+        <br> -->
+        <p class="f_tip" style="text-align:center;">请您填写以下信息，我们将尽快与您取得联络。</p>
+        <form id="myform" name="myform" method="post" action="__ROOT__/?m=Feedback&a=check" onSubmit="return CheckJob()">
+        <dl class="table">
+            <div class="talbe_nei">
+
+            <div>
+                <dt>标题<span style="color:red">*</span></dt>
+                <dd><input name="title" type="text" class="textwidth"/></dd>
+            </div>
+            <div>
+                <dt>姓名<span style="color:red">*</span></dt>
+                <dd><input name="name" type="text" class="textwidth"/></dd>
+            </div>
+            <div>
+                <dt>手机号码<span style="color:red">*</span></dt>
+                <dd><input name="tel" type="text" class="textwidth"/></dd>
+            </div>
+            <div>
+                <dt>Email<span style="color:red">*</span></dt>
+                <dd><input name="email" type="text" class="textwidth"/></dd>
+            </div>
+            <!-- <div>
+                <dt class="hide">联系地址：</dt>
+                <dd class="hide"><input name="add" type="text" class="textwidth"/></dd>
+            </div> -->
+            <div>
+                <dt>留言<span style="color:red">*</span></dt>
+                <dd class="biezhu"><textarea name="contents" class="areawidth"></textarea></dd>
+            </div>
+            <div>
+                <dt>验证码<span style="color:red">*</span></dt>
+                <dd><input name="code" maxlength="4" style="width:380px;height: 40px; text-align:center;text-indent:0"><img class="codeimg" src="<{:U('Common/verify')}>" onclick='this.src=this.src+"?"+Math.random()'/></dd>
+                <div class="clearfix"></div>
+            </div>
+            
+            <div>
+                <dt></dt>
+            <dd><input type="submit" name="button" value="提交留言" class="submit_btn"/>
+            <input name="reset" type="reset"  class="submit_btn" value="重置" /></dd>
+            </div>
+        </div>
+
+        </dl>
+        </form>
+        <div class="clear"></div>
+  </div>
+<!-- end of main -->
+</div>
+<include file='Public:foot'/>
+
+</body>
+</html>

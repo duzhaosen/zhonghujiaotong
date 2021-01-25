@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<load href="../Public/css/index.css"/>
+<load href="../Public/js/jquery-1.7.2.min.js"/>
+<load href="../Public/js/quickView.js"/>
+<title>修改新闻</title>
+<include file='Public:kinde'/>
+  <script type="text/javascript">
+      $(function () {
+          $( 'body' ).delegate(".del","click", function () {
+              del_image_ajax($(this));
+              return false;
+          } );
+      });
+  </script>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="LineRightBlue1">
+  <tr>
+    <td width="88%" height="24">修改新闻</td>
+    <td width="12%" align="right"><a href="<{:U('New/index')}>">【返回>>】</a></td>
+  </tr>
+</table>
+
+<form action="<{:U('updatenew')}>" method="post" name="myform" id="myform" enctype="multipart/form-data">
+<DIV class="PageContent">
+<table width="100%" border="0" class="ListCategory">
+  <tr>
+    <td width="9%">新闻标题：</td>
+    <td width="91%" height="35"><input name="title" type="text" value="<{$news.title}>" class="FormSmall" style="width: 320px;"> 
+  <span style="color:#F00; font-size:12px;">*必填</span>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>新闻分类:</td>
+    <td height="35">
+      <select name="pid" style="height:28px;">
+      <volist name='list' id='vo'>
+          <option value="<{$vo.id}>" <eq name="vo.id" value="$news.pid">selected="selected"</eq>><{$vo.html}><{$vo.name}></option>
+      </volist>
+      </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td>排序ID：</td>
+    <td height="35"><input name="sort" type="text" value="<{$news.sort}>" class="FormSmall" style="width: 50px;"> <span style="color:#F00; font-size:12px;">*必填</span></td>
+  </tr>
+  <tr>
+    <td>首页推荐：</td>
+    <td height="35">
+      <select name="featured" style="height:28px;">
+        <option value="0" <eq name="news.featured" value="0">selected="selected"</eq>>否</option>
+        <option value="1" <eq name="news.featured" value="1">selected="selected"</eq>>是</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>缩略图：</td>
+    <td height="35">
+    <div class="thumb_input" <if condition="$news.photo neq ''"> style="display:none"</if>>
+    <input type='file' name='photo'>
+    <input type="hidden" name="tnum" value="1">
+    </div>
+  <noempty name="news.photo">
+      <p class="thumb_image" style="padding:4px 0; <if condition="$news.photo eq ''">display:none;</if>">
+        <img class="upload_img left" src="__ROOT__/Uploads/<{$news.photo}>" height="60" onerror="this.src='../Public/images/error.jpg'"/>
+        <a href="<{:U('delphoto',array('name'=>$news['photo'],'id'=>$news['id'],'field'=>'photo'))}>" class='del del_img left' data-hide=".thumb_image" data-show=".thumb_input"></a>
+      &nbsp;&nbsp;&nbsp;&nbsp;<small></small>
+      </p>
+  </noempty>
+    </td>
+  </tr>
+
+  <tr>
+    <td>URL优化：</td>
+    <td height="35"><input name="url" type="text" value="<{$news.url}>" class="FormSmall" style="width: 320px;"> <a title='URL只能是字母，数字，下划线或-'style="margin-left: 5px;" href="#"><img src="../Public/images/help.gif"></a></td>
+  </tr>
+  
+  <tr>
+    <td>SEO关键字：</td>
+    <td height="35"><input name="keywords" type="text" value="<{$news.keywords}>"  class="FormSmall" style="width: 320px;"></td>
+  </tr>
+  
+  <tr>
+    <td>描述：</td>
+    <td height="110"><textarea name="description" class="FormSmall" style="width: 450px; height: 80px;"><{$news.description}></textarea>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>新闻内容：</td>
+    <td>
+    <textarea name="contents" id="contents" style="width:745px; height:360px; margin:8px 0;"><{$news.contents}></textarea>
+    </td>
+  </tr>
+  
+</table>
+</DIV>
+<table width="100%">
+   <tr>
+    <td width="9%" height="55" align="center">
+    </td>
+    <td height="55" align="left">
+    <input type="hidden" name="id" value="<{$news.id}>">
+    <input type="submit" value="确认修改" class="bginput">&nbsp;&nbsp;
+    </td>
+    </tr> 
+</table>
+</form>
+</body>
+</html>

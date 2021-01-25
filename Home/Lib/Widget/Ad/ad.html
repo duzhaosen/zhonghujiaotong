@@ -1,0 +1,7 @@
+<volist name='ad' id='vo'>
+	<a class="ad ad<{$vo.id}>" href="<{$vo.link}>">
+		<span><img src="__ROOT__/Uploads/<{$vo.photo}>" onerror="this.src='../Public/images/error.jpg'" alt="<{$vo.title}>"></span>
+		<h4><{$vo.title}></h4>
+		<p><{$vo.desc}></p>
+	</a>
+</volist>

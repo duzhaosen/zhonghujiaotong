@@ -1,0 +1,6 @@
+<!--在线QQ-->
+<if condition="$Think.config.qq_account neq ''">
+    <foreach name="online_qq" item="vo">
+        <a target="_blank" title="点击联系<{$key}>" href="http://wpa.qq.com/msgrd?v=3&uin=<{$online_qq.$key}>&site=qq&menu=yes"><{$key}></a>     
+    </foreach>
+</if>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>联系方式-<{$Think.config.seo_title}></title>
+<meta name="keywords" content="<{$Think.config.seo_keywords}>" />
+<meta name="description" content="<{$Think.config.seo_description}>" />
+<script language="javascript">var catid="",pid="";</script>
+<include file='Public:file'/>
+<style>
+  .page_banner a{cursor:context-menu;}
+</style>
+<SCRIPT language=javaScript>
+function CheckJob()
+{
+  if (document.myform.title.value.length==""){
+    alert ("留言标题不能为空！");
+    document.myform.title.focus();
+    return false;
+  }
+  if (document.myform.name.value.length==""){
+    alert ("姓名不能为空！");
+    document.myform.name.focus();
+    return false;
+  }
+  if (document.myform.tel.value.length==""){
+    alert ("电话不能为空！");
+    document.myform.tel.focus();
+    return false;
+  }
+ }
+
+ $(function(){
+  $(".page_banner a").attr("href","javascript:;");
+ });
+</SCRIPT>
+</head>
+<body class="bg">
+<include file='Public:head'/>
+<div class="container">
+
+<div class="main"> 
+      <div class="path_title"><span>联系方式</span></div>
+      <div class="content feedback_cont">
+        <div><{:W('About',array('id'=>87,'len'=>99999999999))}></div>
+        <p class="f_tip">请您填写以下信息，我们将尽快与您取得联络。</p>
+        <form id="myform" name="myform" method="post" action="__ROOT__/?m=Feedback&a=check" onSubmit="return CheckJob()">
+          <ul class="feedback_list">
+            <li><span>留言标题：</span><input name="title" type="text" placeholder="请输入标题" class="textwidth"/></li>
+            <li><span>您的姓名：</span><input name="name" type="text" placeholder="请输入姓名" class="textwidth"/></li>
+            <li><span>联系电话：</span><input name="tel" type="text" placeholder="请输入电话" class="textwidth"/></li>
+            <li><span>电子邮箱：</span><input name="email" type="text" placeholder="请输入邮箱" class="textwidth"/></li>
+            <li class="hide"><span>联系地址：</span><input name="add" type="text" placeholder="请输入联系地址" class="textwidth"/></li>
+            <li><span>留言内容：</span><textarea name="contents" placeholder="请输入留言内容" class="areawidth"></textarea></li>
+            <li class="code"><span>验证码：</span><input name="code" maxlength="4"><img class="codeimg" src="<{:U('Common/verify')}>" onclick='this.src=this.src+"?"+Math.random()'/></li>
+          </ul>
+          <input type="submit" name="button" value="提交留言" class="submit_btn"/>
+        </form>        
+      </div>
+</div>
+<!-- end of main -->
+</div>
+<include file='Public:foot'/>
+
+</body>
+</html>

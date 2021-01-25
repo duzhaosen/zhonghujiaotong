@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><{$Think.config.seo_title}>|<{$product.title}></title>
+<meta name="keywords" content="<{$Think.config.seo_keywords}>" />
+<meta name="description" content="<{$Think.config.seo_description}>" />
+<include file='Public:file'/>
+<load href="__PUBLIC__/css/product.css"/>
+<load href="__PUBLIC__/js/product.js"/>
+<script language="javascript">var catid=<{$product.pid}>,pid=<{$product.pid}>,bid=<{$product.bid}>;</script>
+</head>
+<body>
+<include file='Public:head'/>
+<div class="container pdt_page">
+<div class="page_banner"><{:W('Ad',array('id'=>'15'))}></div>
+
+<div class="main">  
+
+	<div id="left">
+	  <{:W('Left',array('id'=>$product['bid'],'type'=>'product'))}>
+	  <include file='Public:contact'/>    
+	</div>
+	<!-- end of left -->
+        
+     <div id="right">
+        <div class="path_title"><span class="span_left">产品详情</span><span class="span_right">您现在的位置：<a href="__ROOT__/">网站首页</a> &gt; 产品详情</span></div>
+        <div class="main_photo">
+
+		<div id="preview">
+			<div class="jqzoom" id="spec-n1"><img src="__ROOT__/Uploads/<{$photo[0]}>" jqimg="__ROOT__/Uploads/<{$photo[0]}>">
+			</div>
+			<div id="spec-n5">
+			<div class="control" id="spec-left">
+				<img src="__PUBLIC__/images/left.gif" />
+			</div>
+			<div id="spec-list">
+				<ul "class=list-h">
+	              <volist name='photo' id='vo'>
+	                  <li><img src="__ROOT__/Uploads/<{$photo[$key]}>" alt="<{$product.name|}>"></li>
+	              </volist>
+				</ul>
+			</div>
+			<div class="control" id="spec-right">
+				<img src="__PUBLIC__/images/right.gif" />
+			</div>
+		    </div>
+		</div>
+
+	   </div>
+	   <!-- end of main_photo -->
+
+        <div class="product_group">
+            <h1><{$product.name}></h1>
+            <ul class="attr">
+                <li><{$product.property1}></li>
+                <li><{$product.property2}></li>
+                <li><{$product.property3}></li>
+                <li><{$product.property4}></li>
+                <li><{$product.property5}></li>
+                <li><{$product.property6}></li>
+                <li><{$product.property7}></li>
+                <li><{$product.property8}></li>
+            </ul>
+            <div class="desc"><{$product.description|mb_substr=###,0,900,'utf-8'}></div>			
+			<div class="pdt_tel clearfix">
+            	<div class="">
+	            	<span class="tel">咨询热线<br /><p><{$Think.config.web_tel}>&nbsp;<{$Think.config.web_phone}></p></span>
+					<span class="fd"><a href="#buy">在线询价</a></span>	            		
+            	</div>
+            </div>
+			<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+			<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+            
+        </div>
+
+        <div class="clearfix"></div>
+        
+ 		<h3 class="introduce">产品介绍</h3>
+        <div class="product_content">
+            <{$product.contents}>
+        </div>
+
+		<div class="pdt_inquiry clearfix">
+			<a name="buy"></a>
+			<h3 class="introduce">在线询价</h3>
+			<form id="myform" name="myform" method="post" action="__ROOT__/?m=Inquiry&a=check" onSubmit="return CheckJob()">
+				<div class="area_box"><textarea name="contents" class="areawidth fr" placeholder="请详细描述，方便我们提前备货"></textarea></div>
+				<dl class="forms fl">
+					<dt>产品名称：</dt>
+					<dd><input name="product" type="text" readonly value="<{$product.name}>" class="textwidth"/></dd>
+					<dt>询价数量：</dt>
+					<dd><input name="num" type="text" class="textwidth" placeholder="请输入询价数量"></dd>
+					<dt>联系人：</dt>
+					<dd><input name="name" type="text" class="textwidth" placeholder="请输入真实姓名(必填)"></dd>
+					<dt class="hide">公司名称：</dt>
+					<dd class="hide"><input name="company" type="text" class="textwidth" placeholder="请输入公司名称"></dd>
+					<dt class="hide">联系地址：</dt>
+					<dd class="hide"><input name="add" type="text" class="textwidth" placeholder="请输入联系地址"></dd>
+					<dt>联系电话：</dt>
+					<dd><input name="tel" type="text" class="textwidth" placeholder="请输入联系电话(必填)"></dd>
+					<dt class="hide">传 真：</dt>
+					<dd class="hide"><input name="fax" type="text" class="textwidth" placeholder="请输入传真"></dd>
+					<dt>电子邮箱：</dt>
+					<dd><input name="email" type="text" class="textwidth" placeholder="请输入电子邮箱"></dd>      
+					<dt>验证码：</dt>
+					<dd><input name="code" type="text" class="textwidth" maxlength="4" placeholder="请输入验证码"><img class="codeimg" src="<{:U('Common/verify')}>" onclick='this.src=this.src+"?"+Math.random()'/></dd>
+				</dl>
+					<div class="forms_btn fl">
+						<input type="submit" name="button" value="提交询价" class="submit_btn"/>
+						<!-- <input name="reset" type="reset"  class="submit_btn" value="重置" /> -->
+					</div>
+				</form>		
+		</div>
+
+    </div>
+        <!-- end of right -->
+
+
+</div>
+<!-- end of main -->
+</div>
+<SCRIPT type=text/javascript>
+	$(function(){			
+	   $(".jqzoom").jqueryzoom({
+			xzoom:413,
+			yzoom:413,
+			offset:20,
+			position:"right",
+			preload:1,
+			lens:1
+		});
+		$("#spec-list").jdMarquee({
+			deriction:"left",
+			width:420,
+			height:56,
+			step:1,
+			speed:4,
+			delay:10,
+			control:true,
+			_front:"#spec-right",
+			_back:"#spec-left"
+		});
+		$("#spec-list img").bind("mouseover",function(){
+			var src=$(this).attr("src");
+			$("#spec-n1 img").eq(0).attr({
+				src:src.replace("\/n5\/","\/n1\/"),
+				jqimg:src.replace("\/n5\/","\/n0\/")
+			});
+			$(this).css({
+				"border":"2px solid #ff6600",
+				"padding":"1px"
+			});
+		}).bind("mouseout",function(){
+			$(this).css({
+				"border":"1px solid #ccc",
+				"padding":"2px"
+			});
+		});				
+	})
+
+	//a#name
+$('a[href*=#],area[href*=#]').click(function() {
+   if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+      var $target = $(this.hash);
+      $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
+      if ($target.length) {
+         var targetOffset = $target.offset().top;
+         $('html,body').animate({
+               scrollTop: targetOffset - 180 + "px"
+            },
+            1000);
+         return false;
+      }
+   }
+});
+
+</SCRIPT>
+<load href="__PUBLIC__/js/product_lib.js"/>
+<load href="__PUBLIC__/js/product_zoom.js"/>
+<script>
+    $.ajaxSetup({
+        timeout: 300000
+    });
+</script>
+<include file='Public:foot'/>
+</body>
+</html>

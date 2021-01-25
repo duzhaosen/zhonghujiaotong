@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><{$down.title}>-<{$Think.config.seo_title}></title>
+<meta name="keywords" content="<{$down.keywords}>" />
+<meta name="description" content="<{$down.description}>" />
+<include file='Public:file'/>
+<script language="javascript">var catid=<{$down.pid}>,pid=<{$downlist.pid}>;</script>
+</head>
+<body>
+<include file='Public:head'/>
+<div class="container">
+
+<div class="main">
+    <div class="path_title"><span><{$downlist.name}></span></div>
+    
+    <div class="content">
+      <h1 class="content_title"><{$down.name}></h1>
+      <small class="time"><{$down.time|date="Y-m-d",###}></small>        
+        <div class="info">
+          <{$down.contents}>
+        </div>
+        <div class="fj">附件：<{$down.filename}></div>
+        <div class="down_btn"><a href="<{:U('Common/down',array('name'=>$down['filename']))}>" title="下载:<{$down.name}>">点击下载</a><i></i></div> 
+    </div>        
+</div>
+<!-- end of main -->
+</div>
+<include file='Public:foot'/>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><{$list.title}>-<{$Think.config.seo_title}></title>
+<meta name="keywords" content="<{$list.keywords}>" />
+<meta name="description" content="<{$list.description}>" />
+<include file='Public:file'/>
+<script language="javascript">var catid=<{$getid}>,pid=<{$list.pid}>;</script>
+</head>
+<body class="bg">
+<include file='Public:head'/>
+<div class="container">
+
+<div class="main">      
+    <div class="path_title"><span><{$list.name}></span></div>
+    
+    <ul class="download_list">
+      <volist name='article' id='vo'>
+      <li>
+        <a href="<{:W('Href',array('url'=>$vo['url'],'id'=>$vo['id'],'type'=>$table))}>" title="<{$vo.title}>">
+          <h4><{$vo.title|mb_substr=###,0,40,'utf-8'}></h4>
+          <small class="list_time"><{$vo.time|date='Y-m-d',###}></small>
+          <p class="desc"><{$vo.description|mb_substr=###,0,90,'utf-8'}></p>
+        </a>
+      </li>
+      </volist>        
+    </ul>
+    
+    <div class="page">
+      <{$page}>
+    </div>
+      
+</div>
+<!-- end of main -->
+</div>
+<include file='Public:foot'/>
+</body>
+</html>

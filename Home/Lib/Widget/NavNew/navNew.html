@@ -1,0 +1,13 @@
+<if condition="$type == 0">
+<div class="ssome">
+    <volist name='list' id='vo'>
+        <div class="ssomes">
+            <div class="ss" style="background:url('__ROOT__/Uploads/<{$vo.icon}>') 0 0 / 100% 100% no-repeat">
+                <a class="nav_a nav_<{$vo.url}>" href="<{:W('Listhref',array('url'=>$vo['url'],'id'=>$vo['id'],'link'=>$vo['link']))}>"><{$vo.name}></a>
+            </div>
+            <a style="margin:20px 0px;font-size:16px;" class="nav_a nav_<{$vo.url}>" href="<{:W('Listhref',array('url'=>$vo['url'],'id'=>$vo['id'],'link'=>$vo['link']))}>"><{$vo.name}></a>
+        </div>
+    </volist>
+</div>
+<else />
+</if>

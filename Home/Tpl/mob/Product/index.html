@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><{$product.title}>-<{$Think.config.seo_title}></title>
+<meta name="keywords" content="<{$product.keywords}>" />
+<meta name="description" content="<{$product.description}>" />
+<include file='Public:file'/>
+<load href="__PUBLIC__/css/product.css"/>
+<load href="__PUBLIC__/js/product.js"/>
+<script language="javascript">var catid=<{$product.pid}>,pid=<{$product.pid}>,bid=<{$product.bid}>;</script>
+</head>
+<body>
+<include file='Public:head'/>
+<div class="container">
+	<div class="main">  
+	  
+		<div class="pdt_thumb">
+			<ul class="slides">
+	          <volist name='photo' id='vo'>
+	              <li><img src="__ROOT__/Uploads/<{$photo[$key]}>" alt="<{$product.name|}>"></li>
+	          </volist>
+			</ul>
+		</div>
+
+	    <div class="product_group">
+	        <h2><{$product.name}></h2>
+	        <ul>
+	            <li class="desc"><{$product.description|mb_substr=###,0,200,'utf-8'}></li>
+	        </ul>
+	    </div>
+	        
+		<h3 class="introduce">产品介绍</h3>
+	    <div class="product_content">
+	        <{$product.contents}>
+	    </div>
+
+	</div>
+<!-- end of main -->
+</div>
+
+<load href="__PUBLIC__/js/product_lib.js"/>
+<load href="__PUBLIC__/js/product_zoom.js"/>
+<script>
+    $.ajaxSetup({
+        timeout: 300000
+    });
+$(function(){
+// banner    
+    $('.pdt_thumb').flexslider({
+        directionNav: true,
+        pauseOnAction: false
+    });	
+});
+</script>
+<include file='Public:foot'/>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><{$news.title}>-<{$Think.config.seo_title}></title>
+<meta name="keywords" content="<{$news.keywords}>" />
+<meta name="description" content="<{$news.description}>" />
+<include file='Public:file'/>
+<script language="javascript">var catid=<{$news.pid}>,pid=<{$newlist.pid}>;</script>
+</head>
+<body>
+<include file='Public:head'/>
+<div class="container">
+
+<div class="main">
+    <!-- <div class="path_title"><span><{$newlist.name}></span></div> -->
+    <div class="content">
+      <h1 class="content_title"><{$news.title}><small class="time"><{$news.time|date="Y-m-d",###}></small></h1>
+      <div class="news_info">
+        <{$news.contents}>
+      </div>
+    </div>    
+</div>
+<!-- end of main -->
+</div>
+<include file='Public:foot'/>
+
+</body>
+</html>

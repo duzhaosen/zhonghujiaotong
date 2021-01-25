@@ -1,0 +1,18 @@
+<script type="text/javascript">var baiduPath="__PUBLIC__/";</script>
+<script charset="utf-8" src="<{$adminName}>/ueditor/ueditor.config.js"></script>
+<script charset="utf-8" src="<{$adminName}>/ueditor/ueditor.all.js"></script>
+<script charset="utf-8" src="<{$adminName}>/ueditor/ueditor.parse.min.js"></script>
+<script charset="utf-8" src="<{$adminName}>/ueditor/lang/zh-cn/zh-cn.js"></script>
+<load href="../Public/js/jquery-1.7.2.min.js"/>
+<script type="text/javascript">
+$(function () {
+
+    if (document.getElementById("contents") != null) {
+        UE.getEditor('contents', {    //contents为要编辑的textarea的id
+            initialFrameWidth: 900,   //初始化宽度
+            initialFrameHeight: 400,   //初始化高度
+            scaleEnabled: true//设置不自动调整高度
+        });
+    }
+});
+</script>

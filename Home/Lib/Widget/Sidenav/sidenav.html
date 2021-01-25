@@ -1,0 +1,76 @@
+<!-- mobile -->
+<div class="sidebar">
+    <a href="javascript:;" class="menu_btn">菜单</a>
+    <div class="grey_back" style="display: none;"><span></span></div>
+    <div class="sidebar_wrap">
+      <div id="side-menu" class="side-menu white">
+        <!-- 搜索 -->
+        <div class="searchformzone">
+            <form id="searchform_nav" method="get" action="<{:U('Search/index')}>">
+                <div class="searchform">
+                    <input type="text" name="name" class="input" value="请输入产品关键字" onblur="if(this.value.length<1)this.value=this.defaultValue;" onfocus="if(this.value==this.defaultValue)this.value=''"/>
+                </div>
+                <div class="search_submit">
+                  <a href="javascript:searchform_nav.submit();">搜索</a>
+                </div>
+            </form>
+        </div>
+
+        <ul id="side-list">
+         <volist name='nav' id='vo'>
+            <li class="snav1"><a href="<{:W('Listhref',array('url'=>$vo['url'],'id'=>$vo['id'],'link'=>$vo['link']))}>"><{$vo.name}></a>
+              <ul class="submenu">
+              <volist name='snav' id='svo'>
+                <eq name="svo.pid" value="$vo.id">
+                  <li class="snav2"><a href="<{:W('Listhref',array('url'=>$svo['url'],'id'=>$svo['id'],'link'=>$svo['link']))}>"><{$svo.name}></a></li>
+                    <ul class="thimenu">
+                    <volist name='snav' id='tvo'>
+                      <eq name="tvo.pid" value="$svo.id">
+                        <li class="snav2"><a href="<{:W('Listhref',array('url'=>$tvo['url'],'id'=>$tvo['id'],'link'=>$tvo['link']))}>"><{$tvo.name}></a></li>
+                      </eq>
+                    </volist>
+                    </ul>
+                </eq>
+              </volist>
+              </ul>
+            </li>
+          </volist>
+        </ul>
+      </div>    
+    </div>
+</div>
+
+<script>
+// mobile
+$(document).ready(function () {
+    var isMenuOpen = false;
+
+    $('.menu_btn').click(function () {
+        if (isMenuOpen == false) {
+            $(".sidebar_wrap").clearQueue().animate({
+                right: '0px'
+            })
+            $(".grey_back").fadeIn('fast');
+            $(this).fadeOut(200);
+            $("body").css("overflow","hidden");
+            isMenuOpen = true;
+        }
+    });
+    $('.grey_back').click(function () {
+        if (isMenuOpen == true) {
+            $(".sidebar_wrap").clearQueue().animate({
+                right: '-220px'
+            })
+            $(".grey_back").fadeOut('fast');
+            $(this).fadeOut(200);
+            $(".menu_btn").fadeIn(300);
+            $("body").css("overflow","auto");
+            isMenuOpen = false;
+        }
+    });
+});
+ 
+$(function(){
+  $("#side-menu").jqueryAccordionMenu();
+});
+</script>

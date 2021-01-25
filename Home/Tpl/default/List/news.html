@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><{$Think.config.seo_title}>|<{$list.name}></title>
+<meta name="keywords" content="<{$list.name}>" />
+<meta name="description" content="<{$Think.config.seo_description}>" />
+<include file='Public:file'/>
+<script language="javascript">var catid=<{$getid}>,pid=<{$list.pid}>;</script>
+</head>
+<body>
+<include file='Public:head'/>
+<div class="container">
+<div class="page_banner ">
+    <{:W('Img',array('id'=>$list['pid']))}>
+</div>
+
+<div class="main">      
+    <{:W('Left',array('id'=>$list['bid'],'type'=>$list['type']))}>
+   <!-- end of left -->
+  
+  <div id="right">
+    <div class="path_title"><span class="span_left"><{$list.name}></span><span class="span_right">您现在的位置：<a href="__ROOT__/">网站首页</a> &gt; <{$list.name}></span></div>
+    
+    <ul class="news_list">
+      <volist name='article' id='vo'>
+      <li>
+        <a href="<{:W('Href',array('url'=>$vo['url'],'id'=>$vo['id'],'type'=>$table))}>" title="<{$vo.title}>">
+          <span class="image"><img name="picautozoom" src="__ROOT__/Uploads/<{$vo.photo}>" width="100" onerror="this.src='../Public/images/error.jpg'" alt="<{$vo.name}>"/></span>
+          <h4><{$vo.title|mb_substr=###,0,40,'utf-8'}></h4>
+          <small class="list_time"><{$vo.time|date='Y-m-d',###}></small>
+          <p class="desc"><{$vo.description|mb_substr=###,0,90,'utf-8'}></p>
+        </a>
+      </li>
+      </volist>        
+    </ul>
+    
+    <div class="page">
+      <{$page}>
+    </div>
+      
+  </div>
+  <!-- end of right -->
+  
+</div>
+<!-- end of main -->
+</div>
+<include file='Public:foot'/>
+</body>
+</html>

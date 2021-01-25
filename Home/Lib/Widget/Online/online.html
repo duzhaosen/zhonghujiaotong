@@ -1,0 +1,78 @@
+<!--客服面板-->
+<if condition="$Think.config.is_online neq 0">
+<div id="leftsead">
+<ul>
+<!--在线QQ-->
+<if condition="$Think.config.qq_account neq ''">
+    <foreach name="online_qq" item="vo">
+      <li class="qq_li">
+        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<{$online_qq.$key}>&site=qq&menu=yes"><span class="list"><{$key}></span></a>
+      </li>
+    </foreach>
+</if>
+<!--在线MSN-->  
+<if condition="$Think.config.msn_account neq ''">
+  <foreach name="online_msn" item="vo">
+    <li class="msn_li">
+      <a href="msnim:chat?contact=<{$online_msn.$key}>" target="blank"><span class="list"><{$key}></span></a>
+     </li>
+  </foreach>
+</if>
+<!--在线SKYPE--> 
+<if condition="$Think.config.skype_account neq ''">
+  <foreach name="online_skype" item="vo">
+    <li class="skype_li">
+      <a href="skype:<{$online_skype.$key}>?chat"><span class="list"><{$key}></span></a>
+    </li>
+  </foreach>
+</if>
+<!--淘宝旺旺--> 
+<if condition="$Think.config.taobao_account neq ''">
+  <foreach name="online_taobao" item="vo">
+    <li class="w_li">
+      <a target=blank href="http://amos.im.alisoft.com/msg.aw?v=2&uid=<{$online_taobao.$key}>&site=cntaobao&s=1&charset=utf-8"><span class="list">淘宝旺旺</span></a>
+     </li>
+  </foreach>
+</if>
+<!--旺旺国内版--> 
+<if condition="$Think.config.1688_account neq ''">
+  <foreach name="online_1688" item="vo">
+    <li class="ww_li">
+      <a target="_blank" href="http://amos.alicdn.com/msg.aw?v=2&uid=<{$online_1688.$key}>&site=cnalichn&s=10&charset=UTF-8" ><span class="list">旺旺国内版</span></a>
+    </li>
+  </foreach>
+</if>
+<!--旺旺国际版-->
+<if condition="$Think.config.alibaba_account neq ''">
+  <foreach name="online_alibaba" item="vo">
+    <li class="www_li">
+      <a class="alitalk-link" data-uid="<{$online_alibaba.$key}>" target="_blank" href="http://amos.alicdn.com/msg.aw?v=2&uid=<{$online_alibaba.$key}>&site=enaliint&s=22&charset=UTF-8"><span class="list"><{$key}></span></a>
+     </li>
+  </foreach>
+</if>
+  <li class="feedback hide">
+    <a href="/feedback"><span class="list">在线留言</span></a>
+  </li>
+
+  <li class="code_li hide">
+    <a href="javascript:;"><span class="list">扫二维码</span><div class="code hide"><img  src="__ROOT__/Uploads/<{$Think.config.web_qrcode}>"></div></a>
+  </li>
+  <li class="top_li">
+    <a id="top_btn" href="javascript:;"><span class="list">返回顶部</span></a>
+  </li>
+</ul>
+</div>
+
+ <script type="text/javascript">
+$(document).ready(function(){
+  $("#leftsead a").hover(function(){  
+      $(this).children(".list").animate({marginRight:'0px'},'slow'); 
+      $(this).find(".code").show(200);  
+  },function(){   
+      $(this).children(".list").animate({marginRight:'-140px'},'slow'); 
+      $(this).find(".code").hide(200); 
+  });
+  $("#top_btn").click(function(){if(scroll=="off") return;$("html,body").animate({scrollTop: 0}, 300);});
+});
+</script>
+</if>

@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?><img src="__ROOT__/Uploads/<?php echo ($list["icon"]); ?>" onerror="this.src='../Public/images/error.jpg'"/>

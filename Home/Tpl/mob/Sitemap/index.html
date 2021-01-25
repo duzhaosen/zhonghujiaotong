@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>网站地图-<{$Think.config.web_name}></title>
+<meta name="keywords" content="<{$Think.config.seo_keywords}>" />
+<meta name="description" content="<{$Think.config.seo_description}>" />
+<include file='Public:file'/>
+<script language="javascript">var catid="",pid="";</script>
+</head>
+<body>
+<include file='Public:head'/>
+<div class="container">
+	<div class="main">     
+	    <div class="path_title"><span>网站地图</span></div>
+	    <div class="content table_page">     
+        <ul class="ul_sitemap">
+          <volist name="list" id="vo">
+               <li <if condition='$vo.level eq 2'>class="small_li2_sitemap"<elseif condition='$vo.level eq 1'/>class="small_li_sitemap"</if>>|-<{$vo.html}>
+                  <a href="<{:W('Listhref',array('url'=>$vo['url'],'id'=>$vo['id'],'link'=>$vo['link']))}>" target="_blank"><{$vo.name}></a>  
+               </li>
+          </volist>
+        </ul>
+	    </div>            
+	</div>
+</div>
+
+<include file='Public:foot'/>
+
+</body>
+</html>

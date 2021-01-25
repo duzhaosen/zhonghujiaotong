@@ -1,0 +1,25 @@
+<if condition="count($bigclass) == 0"><else />
+<div id="left">
+<h2><{$parentname}></h2>
+<div class="side_menu" id="side_menu">
+  <ul>
+    <volist name='bigclass' id='vo'> 
+      <if condition="$vo.nav eq '0'"><else />
+        <li class="fir_li"><a class="inactive" id="cat_active<{$vo.id}>" href="<{:W('Listhref',array('url'=>$vo['url'],'id'=>$vo['id'],'link'=>$vo['link']))}>"><{$vo.name}></a><em></em>
+          <ul id="small<{$vo.id}>" class="sec_ul">
+            <volist name='smallclass' id='svo'>
+              <if condition="$svo.nav eq '0'"><else />
+                <eq name="svo.pid" value="$vo.id">
+                <li class="sec_li"><a id="cat_active<{$svo.id}>" href="<{:W('Listhref',array('url'=>$svo['url'],'id'=>$svo['id'],'link'=>$svo['link']))}>"><{$svo.name}></a></li>
+                </eq>
+              </if>
+            </volist>
+          </ul> 
+        </li>
+      </if>
+  </volist>
+  </ul>
+</div>
+<include file='Public:contact'/>
+</div>
+</if>

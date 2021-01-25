@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><{$keyword}>-<{$Think.config.seo_title}></title>
+<meta name="keywords" content="<{$Think.config.seo_keywords}>" />
+<meta name="description" content="<{$Think.config.seo_description}>" />
+<include file='Public:file'/>
+<script language="javascript">var catid="",pid="";</script>
+</head>
+<body class="bg">
+<include file='Public:head'/>
+<div class="container">
+<div class="main">        
+
+    <div class="path_title"><span>搜索结果</span></div>
+    <div class="product_list">
+      <ul class="clearfix">
+      <volist name='product' id='vo'>   
+        <li>
+          <a href="<{:W('Href',array('url'=>$vo['url'],'id'=>$vo['id'],'type'=>'Product'))}>">
+            <span><img name="picautozoom" src="__ROOT__/Uploads/<{$vo.thumb}>" alt="<{$vo.name|}>"/></span>
+            <p><{$vo.name|redWord=###,200,$keyword}></p>
+          </a>
+        </li>
+      </volist>
+      </ul>  
+    </div>
+      <div class="page">
+        <{$page}>
+      </div>
+            
+</div>
+<!-- end of main -->
+</div>
+<include file='Public:foot'/>
+<script>
+    $.ajaxSetup({
+        timeout: 300000
+    });
+</script>
+
+</body>
+</html>

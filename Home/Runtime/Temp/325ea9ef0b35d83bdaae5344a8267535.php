@@ -1,0 +1,3 @@
+<?php
+//000000086400a:5:{s:5:"table";s:5:"Photo";s:3:"num";i:6;s:3:"bid";i:1;s:2:"id";i:131;s:5:"photo";a:1:{i:0;a:13:{s:2:"id";s:3:"113";s:4:"name";s:21:"复合、压延现场";s:5:"title";s:21:"复合、压延现场";s:3:"url";s:12:"photo-63-424";s:8:"keywords";s:21:"复合、压延现场";s:11:"description";s:21:"复合、压延现场";s:8:"contents";s:0:"";s:5:"thumb";s:17:"5b29157824835.jpg";s:5:"photo";s:0:"";s:3:"pid";s:3:"131";s:3:"bid";s:3:"131";s:4:"sort";s:2:"99";s:8:"featured";s:1:"1";}}}
+?>

@@ -1,0 +1,41 @@
+<ul class="nav clearfix">
+  <volist name='nav' id='vo'>
+    <li class="nav_li"><a class="nav_a nav_<{$vo.url}>" href="<{:W('Listhref',array('url'=>$vo['url'],'id'=>$vo['id'],'link'=>$vo['link']))}>"><{$vo.name}></a>
+        <ul class="subnav">
+          <volist name='snav' id='svo'>
+            <eq name="svo.pid" value="$vo.id">
+            <li class="subnav_li"><a  class="subnav_a"  href="<{:W('Listhref',array('url'=>$svo['url'],'id'=>$svo['id'],'link'=>$svo['link']))}>"><{$svo.name}></a></li>
+            </eq>
+          </volist>
+        </ul> 
+    </li>
+  </volist>
+</ul>
+
+<script>
+    var href = window.location;
+    if(href.pathname == "/"){
+        $(".nav li:eq(0)").addClass("curr");
+    } else {
+        var find = false;
+        $(".nav li a.nav_a").each(function(){
+            console.info($(this).attr("href") , href.pathname);
+           if($(this).attr("href") == href.pathname){
+               find = true;
+               $(this).closest("li").addClass("curr");
+               console.log($("ul", $(this)))
+               return false;
+           }
+        });
+        if(!find){
+            $(".nav li a.subnav_a").each(function(){
+                if($(this).attr("href") == href.pathname){
+                    find = true;
+                    $(this).addClass("curr");
+                    $(this).closest(".nav_li").addClass("curr");
+                    return false;
+                }
+            });
+        }
+    }
+</script>

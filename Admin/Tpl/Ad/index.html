@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<load href="../Public/js/jquery-1.7.2.min.js"/>
+<load href="../Public/css/index.css"/>
+<title>广告管理</title>
+<script type="text/javascript">
+	$(function () {
+		$( '.del' ).click( function () {
+			return confirm('确认删除该广告？');
+		} );
+	});
+</script>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="LineRightBlue1">
+  <tr>
+    <td width="88%" height="24"><a class="tab_top_btn" href="<{:U('Ad/add')}>">添加广告</a></td>
+    <td width="12%" align="right"></td>
+  </tr>
+</table>
+
+<form name="theForm" method="post" action="<{:U('uporder')}>">
+  <div class="tablelisthead">
+    <ul pid='0'>
+      <li class="li_10">排序</li>
+      <li class="li_60">标题</li>
+      <li class="li_10">ID</li>
+      <li class="li_20">编辑</li>
+    </ul>
+  </div>
+  
+  <div id="languageBox2">
+    <div class="tablelist">
+    <volist name='ad' id='vo'>
+      <ul onmouseover="this.style.background ='#FFFDD7'" onmouseout="this.style.background ='#FFFFFF'"  class="tb_list">
+
+          <li class="li_10">
+          <input type="text" value="<{$vo.sort}>" name="sort[<{$vo.id}>]" class="listinput"/>
+          </li>
+
+          <li class="li_60">
+            <img src="__ROOT__/Uploads/<{$vo.photo}>" class="proimg" onerror="this.src='../Public/images/error.jpg'"/>
+            <span class="f_no"><a class="nowrap" href="<{:U('mod',array('id'=>$vo['id']))}>"><{$vo.title}></a></span>
+          </li>
+
+          <li class="li_10">
+          <{$vo.id}>
+          </li>
+
+          <li class="li_20">
+            <a href="<{:U('mod',array('id'=>$vo['id']))}>" class="op_btn_edit">修改</a>
+            <a href="<{:U('del',array('id'=>$vo['id']))}>" class='op_btn_del del'>删除</a>
+          </li>
+
+      </ul>
+    </volist>  
+    </div>
+  </div>
+  
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td height="36" class="BotNavBg">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="8%">
+            <input type="submit" value="更新排序" class="bginput">
+            </td>
+            <td width="92%" align="right"><small>提示：删除广告会导致前台调用失败，请谨慎删除，若重新添加广告请在前台修改对应id重新调用</small> &nbsp;&nbsp;&nbsp;&nbsp;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
